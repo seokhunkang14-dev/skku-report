@@ -1,0 +1,7 @@
+{"mint_latency_ms":[2425,2291,1432,1445,2189,2206],
+ "mint_gas":{"first_for_owner":80783,"subsequent":63683},
+ "gas_price_kei":27500000000,
+ "deploy":{"gas":1259504,"tx":"0xf80d803825002ffb5686faad94070f1e31d9bf35bec3515368eca6f55ec0710a"},
+ "contract":"0xdaac228a89353547c5b405d778ddb70fb0b58ff7","minter":"0xb50b4911255e2cb6d8baeb9f7d5f8de78cb08a7f",
+ "minter_balance_after":49.945969815,
+ "sample_tx":"0x0a4ee5a6f7a85d002f0e6b8b8740b435fbdb83d3031e12f4cd62753e99c419f0"}
