@@ -11,6 +11,9 @@ on:
         type: boolean
         default: true
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -33,10 +36,15 @@ jobs:
         run: cp android/app/build/outputs/apk/debug/app-debug.apk NFTime-1.0.0.apk
       - uses: actions/upload-artifact@v4
         with: { name: NFTime-apk, path: NFTime-1.0.0.apk }
+      - name: Publish release (APK 다운로드 링크)
+        env: { GH_TOKEN: '${{ secrets.GITHUB_TOKEN }}' }
+        run: |
+          gh release delete v1.0.0 -y --cleanup-tag || true
+          gh release create v1.0.0 NFTime-1.0.0.apk --title "NFTime v1.0.0 (Android)" --notes "Kaia Kairos 테스트넷용 테스트 빌드. Commit ${GITHUB_SHA::7}" --target "$GITHUB_SHA"
 
   screenshots:
     needs: build
-    if: github.event_name == 'workflow_dispatch' && inputs.screenshots
+    if: (github.event_name == 'workflow_dispatch' && inputs.screenshots) || contains(github.event.head_commit.message, '[shots]')
     runs-on: ubuntu-latest
     timeout-minutes: 40
     steps:
@@ -61,3 +69,9 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with: { name: screenshots, path: shots }
+      - name: Commit screenshots
+        if: always()
+        run: |
+          mkdir -p docs/screenshots && cp shots/*.png docs/screenshots/ || true
+          git config user.name "github-actions[bot]"; git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/screenshots && git commit -m "Update screenshots [skip ci]" && git pull --rebase && git push || true
