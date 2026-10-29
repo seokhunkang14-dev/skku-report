@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">NFTime</string>
+    <string name="wallpaper_name">NFTime 아트 배경화면</string>
+    <string name="wallpaper_desc">보유한 아트 NFT가 시간에 따라 바뀌는 라이브 배경화면</string>
+</resources>

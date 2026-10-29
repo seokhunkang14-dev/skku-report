@@ -1,0 +1,14 @@
+<resources>
+    <color name="black">#FF111111</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="bg">#FFFFFFFF</color>
+    <color name="surface">#FFF4F4F6</color>
+    <color name="line">#FFE6E6EA</color>
+    <color name="text">#FF111111</color>
+    <color name="text2">#FF6B6B76</color>
+    <color name="text3">#FFA0A0AA</color>
+    <color name="accent">#FF7C5CFF</color>
+    <color name="kaia">#FFBFF009</color>
+    <color name="ok">#FF1FB57A</color>
+    <color name="danger">#FFE5484D</color>
+</resources>

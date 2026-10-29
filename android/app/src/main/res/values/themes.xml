@@ -1,0 +1,43 @@
+<resources>
+    <style name="Theme.NFTime" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/black</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/accent</item>
+        <item name="android:colorBackground">@color/bg</item>
+        <item name="android:windowBackground">@color/bg</item>
+        <item name="android:statusBarColor">@color/bg</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:navigationBarColor">@color/bg</item>
+        <item name="bottomSheetDialogTheme">@style/ThemeOverlay.NFTime.BottomSheet</item>
+    </style>
+    <style name="ThemeOverlay.NFTime.BottomSheet" parent="ThemeOverlay.Material3.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/NFTime.BottomSheet</item>
+    </style>
+    <style name="NFTime.BottomSheet" parent="Widget.Material3.BottomSheet.Modal">
+        <item name="backgroundTint">@color/white</item>
+    </style>
+    <style name="Btn.Primary" parent="Widget.Material3.Button">
+        <item name="android:layout_height">54dp</item>
+        <item name="backgroundTint">@color/black</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="cornerRadius">27dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+    </style>
+    <style name="Btn.Outline" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="android:layout_height">54dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">15sp</item>
+        <item name="strokeColor">@color/line</item>
+        <item name="cornerRadius">27dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+    </style>
+    <style name="Section">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/text</item>
+    </style>
+</resources>

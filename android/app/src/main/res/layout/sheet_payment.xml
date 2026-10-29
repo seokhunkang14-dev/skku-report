@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="20dp">
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="결제하기"
+        android:textColor="@color/black" android:textSize="20sp" android:textStyle="bold" />
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="16dp"
+        android:gravity="center_vertical" android:orientation="horizontal">
+        <com.google.android.material.imageview.ShapeableImageView android:id="@+id/thumb" android:layout_width="56dp" android:layout_height="56dp"
+            android:scaleType="centerCrop" app:shapeAppearanceOverlay="@style/Shape.R8" />
+        <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content"
+            android:layout_marginStart="12dp" android:orientation="vertical">
+            <TextView android:id="@+id/pTitle" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:textColor="@color/black" android:textSize="15sp" android:textStyle="bold" />
+            <TextView android:id="@+id/pArtist" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:textColor="@color/text2" android:textSize="12sp" />
+        </LinearLayout>
+    </LinearLayout>
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20dp"
+        android:text="결제 수단" android:textColor="@color/text2" android:textSize="13sp" />
+    <RadioGroup android:id="@+id/methods" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4dp">
+        <RadioButton android:id="@+id/mCard" android:layout_width="match_parent" android:layout_height="44dp" android:text="신용 · 체크카드" android:checked="true" />
+        <RadioButton android:id="@+id/mKakao" android:layout_width="match_parent" android:layout_height="44dp" android:text="카카오페이" />
+        <RadioButton android:id="@+id/mNaver" android:layout_width="match_parent" android:layout_height="44dp" android:text="네이버페이" />
+        <RadioButton android:id="@+id/mToss" android:layout_width="match_parent" android:layout_height="44dp" android:text="토스페이" />
+    </RadioGroup>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp"
+        android:background="@drawable/bg_round_surface" android:orientation="vertical" android:padding="14dp">
+        <TextView android:id="@+id/summary" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:lineSpacingExtra="6dp" android:textColor="@color/text" android:textSize="13sp" />
+    </LinearLayout>
+    <TextView android:id="@+id/notice" android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_marginTop="10dp" android:textColor="@color/text3" android:textSize="12sp" />
+    <com.google.android.material.button.MaterialButton android:id="@+id/btnPay" style="@style/Btn.Primary"
+        android:layout_width="match_parent" android:layout_marginTop="16dp" />
+</LinearLayout>

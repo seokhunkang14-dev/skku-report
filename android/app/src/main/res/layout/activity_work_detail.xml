@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical">
+<FrameLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1">
+<androidx.core.widget.NestedScrollView android:layout_width="match_parent" android:layout_height="match_parent">
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:paddingBottom="24dp">
+    <ImageView android:id="@+id/hero" android:layout_width="match_parent" android:layout_height="480dp"
+        android:scaleType="centerCrop" android:background="@color/surface" />
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:paddingHorizontal="20dp">
+        <TextView android:id="@+id/artist" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="20dp" android:textColor="@color/text2" android:textSize="13sp"
+            android:background="?attr/selectableItemBackground" />
+        <TextView android:id="@+id/title" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="4dp" android:textColor="@color/black" android:textSize="24sp" android:textStyle="bold" />
+        <TextView android:id="@+id/desc" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="10dp" android:lineSpacingExtra="4dp" android:textColor="@color/text2" android:textSize="14sp" />
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20dp"
+            android:background="@drawable/bg_round_surface" android:orientation="vertical" android:padding="16dp">
+            <TextView android:id="@+id/info" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:lineSpacingExtra="6dp" android:textColor="@color/text" android:textSize="13sp" />
+        </LinearLayout>
+        <TextView android:id="@+id/ownedBadge" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="14dp" android:background="@drawable/bg_pill_kaia" android:paddingHorizontal="12dp"
+            android:paddingVertical="6dp" android:textColor="#FF3D4A00" android:textSize="12sp" android:textStyle="bold" android:visibility="gone" />
+        <TextView style="@style/Section" android:id="@+id/moreTitle" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="28dp" android:text="아티스트의 다른 작품" />
+    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView android:id="@+id/more" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:layout_marginTop="12dp" android:clipToPadding="false"
+        android:paddingHorizontal="20dp" android:nestedScrollingEnabled="false" />
+</LinearLayout>
+</androidx.core.widget.NestedScrollView>
+    <ImageView android:id="@+id/btnBack" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="14dp"
+        android:background="@drawable/bg_circle_white" android:padding="8dp" android:src="@drawable/ic_back" />
+    <ImageView android:id="@+id/btnLike" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="14dp"
+        android:layout_gravity="end" android:background="@drawable/bg_circle_white" android:padding="9dp" android:src="@drawable/ic_heart" />
+</FrameLayout>
+<View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/line" />
+<LinearLayout android:id="@+id/buyBar" android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:gravity="center_vertical" android:orientation="horizontal" android:padding="16dp">
+    <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginEnd="16dp">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="가격" android:textColor="@color/text2" android:textSize="12sp" />
+        <TextView android:id="@+id/price" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:textColor="@color/black" android:textSize="20sp" android:textStyle="bold" />
+    </LinearLayout>
+    <com.google.android.material.button.MaterialButton android:id="@+id/btnBuy" style="@style/Btn.Primary"
+        android:layout_width="0dp" android:layout_weight="1" android:text="작품 구매하기" />
+</LinearLayout>
+<LinearLayout android:id="@+id/ownBar" android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:orientation="horizontal" android:padding="16dp" android:visibility="gone">
+    <com.google.android.material.button.MaterialButton android:id="@+id/btnAddList" style="@style/Btn.Outline"
+        android:layout_width="0dp" android:layout_weight="1" android:layout_marginEnd="8dp" android:text="리스트 담기" />
+    <com.google.android.material.button.MaterialButton android:id="@+id/btnWallpaper" style="@style/Btn.Primary"
+        android:layout_width="0dp" android:layout_weight="1.4" android:text="배경화면 설정"
+        app:icon="@drawable/ic_play" app:iconTint="@color/white" app:iconGravity="textStart" />
+</LinearLayout>
+</LinearLayout>

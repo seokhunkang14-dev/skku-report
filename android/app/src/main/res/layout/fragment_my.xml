@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="20dp">
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="마이" android:textColor="@color/black" android:textSize="24sp" android:textStyle="bold" />
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20dp"
+        android:gravity="center_vertical" android:orientation="horizontal">
+        <View android:layout_width="56dp" android:layout_height="56dp" android:background="@drawable/bg_avatar" />
+        <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content"
+            android:layout_marginStart="14dp" android:orientation="vertical">
+            <TextView android:id="@+id/nick" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:textColor="@color/black" android:textSize="18sp" android:textStyle="bold" />
+            <TextView android:id="@+id/addr" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:layout_marginTop="2dp" android:fontFamily="monospace" android:textColor="@color/text2" android:textSize="12sp" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20dp" android:orientation="horizontal">
+        <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical"
+            android:background="@drawable/bg_round_surface" android:padding="16dp" android:layout_marginEnd="6dp">
+            <TextView android:id="@+id/owned" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0"
+                android:textColor="@color/black" android:textSize="22sp" android:textStyle="bold" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="보유 NFT" android:textColor="@color/text2" android:textSize="12sp" />
+        </LinearLayout>
+        <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical"
+            android:background="@drawable/bg_round_surface" android:padding="16dp" android:layout_marginStart="6dp">
+            <TextView android:id="@+id/liked" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0"
+                android:textColor="@color/black" android:textSize="22sp" android:textStyle="bold" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="좋아요" android:textColor="@color/text2" android:textSize="12sp" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp"
+        android:background="@drawable/bg_round_card" android:orientation="vertical" android:padding="16dp">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="연결된 지갑 · 네트워크"
+            android:textColor="@color/black" android:textSize="15sp" android:textStyle="bold" />
+        <TextView android:id="@+id/chainInfo" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" android:lineSpacingExtra="4dp" android:textColor="@color/text2" android:textSize="13sp" />
+    </LinearLayout>
+    <com.google.android.material.button.MaterialButton android:id="@+id/btnExplorer" style="@style/Btn.Outline"
+        android:layout_width="match_parent" android:layout_marginTop="20dp" android:text="Kaiascan에서 내 지갑 보기" />
+    <com.google.android.material.button.MaterialButton android:id="@+id/btnLogout" style="@style/Btn.Outline"
+        android:layout_width="match_parent" android:layout_marginTop="10dp" android:text="지갑 연결 해제" android:textColor="@color/danger" />
+</LinearLayout>
+</ScrollView>
