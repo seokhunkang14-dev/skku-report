@@ -5,7 +5,13 @@ APK="$1"; OUT="$2"; mkdir -p "$OUT"
 API="https://nftime.nftime-skku.workers.dev"
 PKG=world.nftime.app
 
-shot() { sleep "${2:-4}"; adb exec-out screencap -p > "$OUT/$1.png"; echo "shot $1"; }
+dismiss() {  # 에뮬레이터 ANR 팝업("isn't responding") 닫기
+  for i in 1 2 3; do
+    adb shell uiautomator dump /sdcard/ui.xml >/dev/null 2>&1; adb pull /sdcard/ui.xml /tmp/ui.xml >/dev/null 2>&1
+    if grep -q "t responding" /tmp/ui.xml; then tap_text "Wait"; sleep 1; else break; fi
+  done
+}
+shot() { sleep "${2:-4}"; dismiss; adb exec-out screencap -p > "$OUT/$1.png"; echo "shot $1"; }
 start() { adb shell am start -W -n "$PKG/$1" "${@:2}" >/dev/null; }
 tap_text() {  # uiautomator 로 텍스트(부분일치) 찾아 탭
   adb shell uiautomator dump /sdcard/ui.xml >/dev/null 2>&1
@@ -20,9 +26,12 @@ else: print('not found',t)
 PY
 }
 
+adb shell settings put global hide_error_dialogs 1 || true
+adb shell settings put global anr_show_background 0 || true
 adb shell settings put system screen_off_timeout 1800000
 adb shell svc power stayon true
 adb install -r "$APK"
+sleep 25; adb shell input keyevent KEYCODE_HOME; sleep 5
 
 # 데모 계정 + 샘플 데이터 (실제 Kairos 민팅)
 DEMO=$(curl -s -X POST "$API/api/auth/demo" -d '{}')
@@ -56,7 +65,7 @@ tap_text "보유 NFT";                                           shot 12_library
 tap_text "좋아요";                                             shot 13_library_likes 5
 start .PlaylistActivity --ei playlistId "$PL";                shot 14_playlist 8
 start .PlaylistActivity --ei playlistId "$PL" --ez autoplay true; shot 15_wallpaper_preview 14
-tap_text "wallpaper"; sleep 3; shot 16_set_dialog 2
+tap_text "Set wallpaper"; sleep 3; shot 16_set_dialog 2
 tap_text "home screen and lock"; sleep 2
 tap_text "home screen"; sleep 3
 adb shell input keyevent KEYCODE_HOME;                        shot 17_homescreen 6

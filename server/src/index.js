@@ -18,6 +18,7 @@ const rid = (n = 24) => {
   return [...b].map((x) => x.toString(16).padStart(2, '0')).join('');
 };
 const now = () => new Date().toISOString();
+const ART_BASE = 'https://raw.githubusercontent.com/seokhunkang14-dev/skku-report/main/server/art';
 
 async function getConfig(env, key) {
   const r = await env.DB.prepare('SELECT value FROM config WHERE key=?').bind(key).first();
@@ -51,7 +52,7 @@ const WORK_COLS = `w.id, w.title, w.description, w.style, w.seed, w.palette, w.p
 
 function decorateWork(w, origin) {
   if (!w) return w;
-  return { ...w, image: `${origin}/art/${w.id}.svg`, remaining: Math.max(0, w.edition - (w.minted || 0)) };
+  return { ...w, image: `${origin}/art/${w.id}.jpg`, svg: `${origin}/art/${w.id}.svg`, remaining: Math.max(0, w.edition - (w.minted || 0)) };
 }
 
 function loginMessage(address, nonce, host) {
@@ -114,8 +115,16 @@ export default {
       if (p === '/' ) return new Response(homePage(origin), { headers: { 'content-type': 'text/html; charset=utf-8' } });
       if (p === '/connect') return new Response(connectPage(origin), { headers: { 'content-type': 'text/html; charset=utf-8' } });
 
-      // ---- 아트 이미지 (SVG) ----
+      // ---- 아트 이미지 (JPEG: 생성형 SVG 원본을 렌더링한 결과, GitHub 원본 → 엣지 캐시) ----
       let mm;
+      if ((mm = p.match(/^\/art\/(\d+)\.jpg$/))) {
+        const src = `${ART_BASE}/${mm[1]}.jpg`;
+        const r = await fetch(src, { cf: { cacheTtl: 86400, cacheEverything: true } });
+        if (!r.ok) return err('not found', 404);
+        return new Response(r.body, {
+          headers: { 'content-type': 'image/jpeg', 'cache-control': 'public, max-age=86400', 'access-control-allow-origin': '*' },
+        });
+      }
       if ((mm = p.match(/^\/art\/(\d+)\.svg$/))) {
         const w = await env.DB.prepare('SELECT style, seed, palette FROM works WHERE id=?').bind(+mm[1]).first();
         if (!w) return err('not found', 404);
@@ -131,7 +140,7 @@ export default {
         return json({
           name: `${n.title} #${n.token_id}`,
           description: n.description,
-          image: `${origin}/art/${n.id}.svg`,
+          image: `${origin}/art/${n.id}.jpg`,
           attributes: [{ trait_type: 'Artist', value: n.artist }],
         });
       }
@@ -191,7 +200,7 @@ export default {
           curated,
           newArrivals: works.slice().reverse().slice(0, 6),
           popular: works.slice().sort((a, b) => b.likes + b.minted - (a.likes + a.minted)).slice(0, 6),
-          artists: artists.results.map((a) => ({ ...a, cover: `${origin}/art/${works.find((w) => w.artist_id === a.id)?.id || 1}.svg` })),
+          artists: artists.results.map((a) => ({ ...a, cover: `${origin}/art/${works.find((w) => w.artist_id === a.id)?.id || 1}.jpg` })),
         });
       }
       if (p === '/api/works') {
@@ -313,7 +322,7 @@ export default {
         const r = await env.DB.prepare(`SELECT pl.*, (SELECT COUNT(*) FROM playlist_items i WHERE i.playlist_id=pl.id) AS count,
           (SELECT n.work_id FROM playlist_items i JOIN nfts n ON n.id=i.nft_id WHERE i.playlist_id=pl.id ORDER BY i.position LIMIT 1) AS cover_work
           FROM playlists pl WHERE pl.address=? ORDER BY pl.id DESC`).bind(me).all();
-        return json({ playlists: r.results.map((x) => ({ ...x, cover: x.cover_work ? `${origin}/art/${x.cover_work}.svg` : null })) });
+        return json({ playlists: r.results.map((x) => ({ ...x, cover: x.cover_work ? `${origin}/art/${x.cover_work}.jpg` : null })) });
       }
       if (p === '/api/playlists' && m === 'POST') {
         const { name, intervalMin } = await req.json();

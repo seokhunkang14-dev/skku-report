@@ -43,7 +43,7 @@ public class OnboardingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_onboarding);
         status = findViewById(R.id.status);
         ImageView hero = findViewById(R.id.hero);
-        hero.post(() -> ArtLoader.load(hero, Api.BASE + "/art/1.svg", Math.max(540, hero.getWidth() / 2)));
+        hero.post(() -> ArtLoader.load(hero, Api.BASE + "/art/1.jpg", Math.max(540, hero.getWidth() / 2)));
 
         findViewById(R.id.btnConnect).setOnClickListener(v -> startConnect());
         findViewById(R.id.btnDemo).setOnClickListener(v -> demoLogin());

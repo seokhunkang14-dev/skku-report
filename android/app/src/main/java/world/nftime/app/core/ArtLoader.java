@@ -36,7 +36,8 @@ public final class ArtLoader {
     public static File artFile(Context c, String url) {
         File dir = new File(c.getFilesDir(), "art");
         if (!dir.exists()) dir.mkdirs();
-        return new File(dir, Integer.toHexString(url.hashCode()) + ".svg");
+        String ext = url.endsWith(".svg") ? ".svg" : ".jpg";
+        return new File(dir, Integer.toHexString(url.hashCode()) + ext);
     }
 
     /** 내부 저장소에 SVG 를 다운로드 (이미 있으면 그대로 사용) */
@@ -54,8 +55,20 @@ public final class ArtLoader {
         return f;
     }
 
-    /** SVG 파일을 width 기준으로 렌더링 (세로 비율 유지) */
+    /** 이미지 파일(JPEG/SVG)을 width 기준으로 디코딩/렌더링 */
     public static Bitmap render(File f, int width) throws Exception {
+        if (!f.getName().endsWith(".svg")) {
+            android.graphics.BitmapFactory.Options o = new android.graphics.BitmapFactory.Options();
+            o.inJustDecodeBounds = true;
+            android.graphics.BitmapFactory.decodeFile(f.getPath(), o);
+            int sample = 1;
+            while (o.outWidth / (sample * 2) >= width) sample *= 2;
+            o = new android.graphics.BitmapFactory.Options();
+            o.inSampleSize = sample;
+            Bitmap b = android.graphics.BitmapFactory.decodeFile(f.getPath(), o);
+            if (b == null) throw new Exception("decode failed");
+            return b;
+        }
         byte[] bytes = java.nio.file.Files.readAllBytes(f.toPath());
         SVG svg = SVG.getFromString(new String(bytes, StandardCharsets.UTF_8));
         int w = Math.max(64, width);
