@@ -57,7 +57,7 @@ start .MainActivity --es tab discover;                        shot 04_discover 8
 start .ArtistActivity --ei artistId 1;                        shot 05_artist 7
 start .WorkDetailActivity --ei workId 3;                      shot 06_detail 7
 start .WorkDetailActivity --ei workId 3 --ez openPay true;    shot 07_payment 7
-tap_text "결제하기";                                           shot 08_minting 2
+tap_text "원 결제하기";                                         shot 08_minting 2
                                                               shot 09_mint_result 12
 start .WorkDetailActivity --ei workId 1;                      shot 10_detail_owned 7
 start .MainActivity --es tab library;                         shot 11_library_playlists 7
