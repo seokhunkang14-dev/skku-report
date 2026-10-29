@@ -1,0 +1,12 @@
+CREATE TABLE IF NOT EXISTS config (key TEXT PRIMARY KEY, value TEXT);
+CREATE TABLE IF NOT EXISTS artists (id INTEGER PRIMARY KEY, name TEXT NOT NULL, bio TEXT, followers INTEGER DEFAULT 0);
+CREATE TABLE IF NOT EXISTS works (id INTEGER PRIMARY KEY, artist_id INTEGER NOT NULL, title TEXT NOT NULL, description TEXT, style TEXT, seed INTEGER, palette INTEGER, price INTEGER, edition INTEGER);
+CREATE TABLE IF NOT EXISTS users (address TEXT PRIMARY KEY, nickname TEXT, wallet TEXT, created_at TEXT);
+CREATE TABLE IF NOT EXISTS sessions (token TEXT PRIMARY KEY, address TEXT, created_at TEXT);
+CREATE TABLE IF NOT EXISTS auth_requests (id TEXT PRIMARY KEY, nonce TEXT, address TEXT, status TEXT, token TEXT, created_at TEXT);
+CREATE TABLE IF NOT EXISTS orders (id TEXT PRIMARY KEY, address TEXT, work_id INTEGER, amount INTEGER, method TEXT, status TEXT, created_at TEXT);
+CREATE TABLE IF NOT EXISTS nfts (id INTEGER PRIMARY KEY AUTOINCREMENT, token_id INTEGER, work_id INTEGER, owner TEXT, tx_hash TEXT, order_id TEXT, status TEXT, created_at TEXT);
+CREATE INDEX IF NOT EXISTS idx_nfts_owner ON nfts(owner);
+CREATE TABLE IF NOT EXISTS likes (address TEXT, work_id INTEGER, created_at TEXT, PRIMARY KEY(address, work_id));
+CREATE TABLE IF NOT EXISTS playlists (id INTEGER PRIMARY KEY AUTOINCREMENT, address TEXT, name TEXT, interval_min INTEGER DEFAULT 15, created_at TEXT);
+CREATE TABLE IF NOT EXISTS playlist_items (playlist_id INTEGER, nft_id INTEGER, position INTEGER, PRIMARY KEY(playlist_id, nft_id));
