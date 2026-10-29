@@ -71,3 +71,4 @@ tap_text "home screen"; sleep 3
 adb shell input keyevent KEYCODE_HOME;                        shot 17_homescreen 6
 start .MainActivity --es tab my;                              shot 18_my 7
 echo "done: $ADDR playlist=$PL"
+# rerun 1793284843
