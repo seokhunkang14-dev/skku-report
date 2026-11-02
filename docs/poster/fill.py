@@ -158,7 +158,7 @@ def replace_picture(idx, img, left, top, width):
 
 
 replace_picture(8, 'shots_c.png', 30.8, 50.0, 28.0)   # 결과: 실행 화면
-replace_picture(6, '../report/fig/fig1_arch.png', 1.8, 41.2, 27.0)  # 시스템 구성도
+replace_picture(6, '../report/fig/fig1_arch_hi.png', 1.8, 41.2, 27.0)  # 시스템 구성도
 
 prs.save(OUT)
 print('saved', OUT)
