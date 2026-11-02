@@ -117,7 +117,7 @@ cover.push(para('모바일 애플리케이션', { align: AlignmentType.CENTER, s
 cover.push(para('(최종 구현: MetaMask 지갑 연동 · Kaia Kairos 테스트넷 기반 “NFTime”)', { align: AlignmentType.CENTER, size: 20, color: '555555', after: 900 }));
 cover.push(para('강석훈 (2016313880)', { align: AlignmentType.CENTER, size: 24, after: 1200 }));
 cover.push(para('2026 년 10 월 30 일', { align: AlignmentType.CENTER, size: 24, after: 500 }));
-cover.push(para('지도교수 :  이 준 원       서명 ____________', { align: AlignmentType.CENTER, size: 24, after: 900 }));
+cover.push(para('지도교수 :  차 수 영       서명 ____________', { align: AlignmentType.CENTER, size: 24, after: 900 }));
 const evalCols = [2.4, 2.4, 2.4, 2.4, 2.6, 2.6];
 cover.push(new Table({
   width: { size: cm(14.8), type: WidthType.DXA }, columnWidths: evalCols.map(cm), alignment: AlignmentType.CENTER,
