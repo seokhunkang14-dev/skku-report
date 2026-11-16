@@ -1,0 +1,17 @@
+== rec1
+onboarding 0.2
+home 8.4
+discover 28.6
+detail 43.2
+payment 54.9
+minting 65.9
+result 75.9
+library 82.2
+owned 88.4
+playlist 108.5
+rec1_end 129.4
+== rec2
+playlist2 0.0
+preview 4.2
+homescreen 30.5
+rec2_end 38.6
