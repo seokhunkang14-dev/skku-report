@@ -1,0 +1,24 @@
+<section id="mint" data-transition="fade" style="background:#F7F6F2;color:#1C1B22;font-family:'Noto Sans KR', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:28px;font-weight:700;color:#5B3FE0">핵심 기능 ②</p>
+<h2 style="font-size:64px;font-weight:900;line-height:1.15">원화 결제 → 서버가 내 지갑으로 민팅</h2>
+</div>
+<div style="display:flex;flex-direction:row;gap:56px;align-items:center">
+<img src="/_blob/56b3437aee0930f3d33461b7f789ec8e" alt="원화 결제 및 NFT 발행 시퀀스 다이어그램" style="width:1040px;height:572px;object-fit:contain;background:#FFFFFF;border-radius:20px;border:1px solid #E2E0EA">
+<div style="flex:1;display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;flex-direction:column;gap:8px">
+<h3 style="font-size:36px;font-weight:700">결제 확인 후에만 발행</h3>
+<p style="font-size:26px;color:#4A4A55;line-height:1.5">mint(구매자, 작품)는 owner(민터)만 호출 가능</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<h3 style="font-size:36px;font-weight:700">서명을 직접 구현</h3>
+<p style="font-size:26px;color:#4A4A55;line-height:1.5">RLP + EIP-155 서명을 약 150줄로 구현, 번들 74KB</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<h3 style="font-size:36px;font-weight:700">Transfer 로그로 Token ID</h3>
+<p style="font-size:26px;color:#4A4A55;line-height:1.5">영수증 지연 시 PENDING 저장 후 재확인</p>
+</div>
+</div>
+</div>
+<aside>구매는 이렇게 진행됩니다. 결제 수단을 고르고 결제하면, 서버가 주문을 기록하고 결제를 승인한 뒤, 민터 계정으로 mint 트랜잭션에 서명해서 Kaia 노드로 보냅니다. 서버리스 환경에서는 무거운 web3 라이브러리를 쓰기 어려워서 RLP 인코딩과 EIP-155 서명을 직접 구현했고, 이더리움 표준 라이브러리로 결과를 역검증했습니다. 영수증의 Transfer 이벤트에서 Token ID를 꺼내 앱에 돌려줍니다.</aside>
+</section>

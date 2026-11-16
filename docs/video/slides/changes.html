@@ -1,0 +1,15 @@
+<section id="changes" data-transition="fade" style="background:#F7F6F2;color:#1C1B22;font-family:'Noto Sans KR', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:48px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:28px;font-weight:700;color:#5B3FE0">제안 대비 변경</p>
+<h2 style="font-size:72px;font-weight:900;line-height:1.15">App2App 구조는 그대로, 지갑과 체인만 교체</h2>
+</div>
+<table style="font-size:28px;color:#1C1B22">
+<tr style="background:#E9E6F7"><th style="width:18%">항목</th><th style="width:27%">제안 (2022)</th><th style="width:30%">최종 구현 (2026)</th><th style="width:25%">이유</th></tr>
+<tr><td>지갑</td><td>Kakao Klip App2App</td><td>MetaMask + 딥링크 + EIP-191 서명</td><td>Klip 신규 연동 어려움</td></tr>
+<tr style="background:#FFFFFF"><td>블록체인</td><td>Klaytn Baobab</td><td>Kaia Kairos (Chain ID 1001)</td><td>2024년 Kaia로 통합</td></tr>
+<tr><td>체인 연동</td><td>KAS API</td><td>JSON-RPC + 서버 내 직접 서명</td><td>외부 API 의존 제거</td></tr>
+<tr style="background:#FFFFFF"><td>서버</td><td>AWS EC2 · Go · PostgreSQL</td><td>Cloudflare Workers · D1</td><td>서버리스, 운영비 0</td></tr>
+<tr><td>결제</td><td>다날 · 네이버 결제</td><td>결제수단 UI + 테스트 승인</td><td>실 PG는 사업자 계약 필요</td></tr>
+</table>
+<aside>2022년에 시작한 프로젝트라 그 사이 생태계가 많이 바뀌었습니다. Klaytn은 Kaia로 통합됐고, Klip App2App도 신규로 연동하기 어려워졌습니다. 그래서 앱에서 지갑 앱으로 넘어갔다 돌아오는 App2App 구조는 그대로 두고, 지갑을 MetaMask로, 네트워크를 Kaia로 바꿨습니다. 서버도 서버리스로 옮겨 운영 부담을 없앴습니다.</aside>
+</section>

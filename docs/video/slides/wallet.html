@@ -1,0 +1,24 @@
+<section id="wallet" data-transition="fade" style="background:#F7F6F2;color:#1C1B22;font-family:'Noto Sans KR', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:28px;font-weight:700;color:#5B3FE0">핵심 기능 ①</p>
+<h2 style="font-size:64px;font-weight:900;line-height:1.15">지갑 연결: 앱 → MetaMask → 앱</h2>
+</div>
+<div style="display:flex;flex-direction:row;gap:56px;align-items:center">
+<img src="/_blob/547dda7484186b95be71385aa58619a5" alt="지갑 연결 시퀀스 다이어그램" style="width:980px;height:644px;object-fit:contain;background:#FFFFFF;border-radius:20px;border:1px solid #E2E0EA">
+<div style="flex:1;display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;flex-direction:column;gap:8px">
+<h3 style="font-size:36px;font-weight:700">딥링크로 지갑 앱 호출</h3>
+<p style="font-size:26px;color:#4A4A55;line-height:1.5">MetaMask 인앱 브라우저에서 연결 페이지가 열리고 Kairos 네트워크를 자동 추가·전환</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<h3 style="font-size:36px;font-weight:700">서명 한 번으로 로그인</h3>
+<p style="font-size:26px;color:#4A4A55;line-height:1.5">EIP-191 메시지 서명, 서버가 secp256k1로 주소를 복원·검증. 일회용 nonce, 가스비 없음</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<h3 style="font-size:36px;font-weight:700">자동 복귀 + 폴링</h3>
+<p style="font-size:26px;color:#4A4A55;line-height:1.5">nftime:// 로 앱 복귀, 실패해도 세션 폴링으로 로그인 누락 방지</p>
+</div>
+</div>
+</div>
+<aside>지갑 연결은 앱이 서버에 세션을 만들고, MetaMask 딥링크로 지갑 앱을 엽니다. 지갑 앱 안의 브라우저에서 계정 연결, 네트워크 전환, 메시지 서명이 차례로 일어나고, 서버는 서명에서 공개키를 복원해 주소가 맞는지 확인합니다. 서명은 트랜잭션이 아니라서 가스비가 들지 않습니다. 끝나면 앱으로 자동 복귀하고, 혹시 복귀가 안 되더라도 앱이 세션을 폴링해서 로그인을 마칩니다.</aside>
+</section>

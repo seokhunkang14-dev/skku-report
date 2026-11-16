@@ -1,0 +1,15 @@
+<section id="future" data-transition="fade" style="background:#F7F6F2;color:#1C1B22;font-family:'Noto Sans KR', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:48px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:28px;font-weight:700;color:#5B3FE0">한계와 향후 계획</p>
+<h2 style="font-size:72px;font-weight:900;line-height:1.15">테스트 버전에서 실제 서비스로</h2>
+</div>
+<table style="font-size:28px;color:#1C1B22">
+<tr style="background:#E9E6F7"><th style="width:22%">영역</th><th style="width:38%">현재 (테스트)</th><th style="width:40%">개선 방향</th></tr>
+<tr><td>결제</td><td>결제수단 UI + 테스트 승인</td><td>PG 승인 API 서버 검증 후 발행</td></tr>
+<tr style="background:#FFFFFF"><td>키 관리</td><td>민터 키를 DB에 보관</td><td>KMS/HSM 분리, 발행 한도·모니터링</td></tr>
+<tr><td>지갑 진입</td><td>MetaMask 설치 필요</td><td>소셜 로그인 임베디드 지갑, 계정 추상화</td></tr>
+<tr style="background:#FFFFFF"><td>메타데이터</td><td>서버에서 이미지 제공</td><td>IPFS 고정으로 영속성 확보</td></tr>
+<tr><td>확장</td><td>Android 라이브 배경화면</td><td>위젯·잠금화면, 작가–팬 커뮤니티</td></tr>
+</table>
+<aside>한계도 분명합니다. 결제는 테스트 승인이라 실제 PG 연동이 필요하고, 민터 키도 운영 환경에서는 KMS 같은 안전한 곳으로 옮겨야 합니다. MetaMask 설치는 여전히 장벽이라 소셜 로그인 기반 지갑을 도입하고 싶고, 작품 데이터는 IPFS에 고정해 서비스가 멈춰도 남도록 하려 합니다. 장기적으로는 작가와 팬을 잇는 커뮤니티로 확장하겠습니다.</aside>
+</section>
